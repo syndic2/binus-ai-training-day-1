@@ -1,0 +1,21 @@
+research_task:
+  description: >
+    Conduct in-depth market research on {topic} for {current_year}.
+
+    Focus on identifying:
+    - Key trends and emerging developments
+    - Major players (companies, tools, platforms)
+    - Market opportunities and growth areas
+    - Risks, challenges, or limitations
+    - Real-world use cases and adoption patterns
+
+    Ensure all findings are relevant, recent, and high-signal (avoid generic or outdated information).
+
+  expected_output: >
+    A structured list of exactly 10 bullet points, where each point includes:
+    - A clear insight or finding
+    - Brief explanation (1–2 sentences)
+    - Why it matters (impact or implication)
+    Translate it in Bahasa Indonesia
+
+  agent: researcher

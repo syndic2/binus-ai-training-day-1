@@ -1,0 +1,6 @@
+research_tax_updates:
+  description: >
+    Lakukan pencarian mendalam mengenai pembaruan peraturan perpajakan di {country} tahun {year}.
+  expected_output: >
+    Daftar poin peraturan pajak terbaru beserta referensi hukumnya.
+  agent: tax_researcher

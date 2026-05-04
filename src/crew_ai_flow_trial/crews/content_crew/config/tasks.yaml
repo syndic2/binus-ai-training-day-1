@@ -1,0 +1,83 @@
+planning_task:
+  description: >
+    Create a detailed outline for a blog post about {topic} for {audience}.
+
+    The outline should include:
+    - A compelling title tailored to {audience}
+    - An engaging introduction hook
+    - 3-5 main sections with key points to cover in each
+    - A conclusion with a clear call to action
+
+    Make the outline detailed enough that a writer can produce
+    a full blog post from it without additional research.
+  expected_output: >
+    A structured blog post outline including:
+    - Title
+    - Introduction notes
+    - Detailed section breakdowns
+    - Conclusion notes
+  agent: planner
+
+
+writing_task:
+  description: >
+    Using the outline provided, write a full blog post about {topic} for {audience}.
+
+    Requirements:
+    - Follow the outline structure closely
+    - Write in a clear, engaging, and conversational tone suitable for {audience}
+    - Each section should be 2-3 paragraphs
+    - Include a strong introduction and conclusion
+    - Target around 800-1200 words
+    - Use proper markdown formatting (headings, paragraphs)
+
+  expected_output: >
+    A complete blog post in markdown format, ready for editing.
+    The post should follow the outline and be well-written with
+    clear transitions between sections.
+  agent: writer
+
+
+editing_task:
+  description: >
+    Review and edit the blog post about {topic} for {audience}.
+
+    Focus on:
+    - Fixing grammar and spelling errors
+    - Improving sentence clarity and flow
+    - Ensuring consistent tone for {audience}
+    - Strengthening the introduction and conclusion
+    - Removing redundancy
+
+    Do not rewrite the structure — refine and polish only.
+
+  expected_output: >
+    A polished blog post in markdown format (no ```), 
+    publication-ready with clean formatting and professional tone.
+  agent: editor
+
+
+translating_task:
+  description: >
+    Translate the final edited blog post about {topic} into Bahasa Indonesia
+    for {audience}, then create a concise summary.
+
+    Steps:
+    1. Create exactly 5 key bullet points summarizing the content.
+
+    Rules:
+    - Do not change the meaning of the original content.
+    - Do not add new information.
+    - Use natural Bahasa Indonesia (not literal translation).
+    - Ensure the tone fits {audience}.
+
+  expected_output: >
+    Summary (5 bullet points):
+    - Point 1
+    - Point 2
+    - Point 3
+    - Point 4
+    - Point 5
+
+  agent: translator
+  output_file: output/post_id.md

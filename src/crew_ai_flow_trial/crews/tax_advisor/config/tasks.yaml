@@ -1,0 +1,6 @@
+compliance_impact_analysis:
+  description: >
+    Buat ringkasan eksekutif dan checklist kepatuhan untuk perusahaan berdasarkan regulasi terbaru di {country} tahun {year}.
+  expected_output: >
+    Laporan analisis dampak dan checklist kepatuhan pajak dalam Bahasa Indonesia.
+  agent: tax_corporate_advisor
