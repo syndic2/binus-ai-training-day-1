@@ -1,0 +1,24 @@
+forecaster_task:
+  description: >
+    You MUST call the 'ForecastingToolProphet' tool using the provided Excel file path {file}.
+
+    The file is a time-series dataset with a 'time' column and multiple numeric sensor columns.
+
+    STRICT RULES:
+    - DO NOT analyze the data yourself
+    - DO NOT assume or invent column names
+    - DO NOT generate any results manually
+    - You MUST call the tool
+
+    Return EXACTLY the raw JSON output from the tool without any modification.
+
+    If the tool fails, return the exact error message from the tool.
+
+  expected_output: >
+    A JSON object containing:
+    - total_data (int)
+    - anomaly_count (int)
+    - anomaly_threshold (float)
+    - forecast (str)
+
+  agent: forecaster

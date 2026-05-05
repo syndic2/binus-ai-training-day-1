@@ -1,0 +1,6 @@
+anomaly_detection_task:
+  description: >
+    You are responsible for analyzing the result of 'Tool untuk deteksi anomali data excel' using {file}, if anomaly is greater than total data / 2. Show reminder that there is a problem with the data. Otherwise, show just information.
+  expected_output: >
+    A JSON object containing 'total_data' (int), 'anomaly_count' (int), and 'message' (str) which is a reminder based on the analysis.
+  agent: anomaly_detector

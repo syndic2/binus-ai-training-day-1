@@ -1,0 +1,8 @@
+file_analyzer_task:
+  description: >
+    Conduct a thorough extract of an existing file {file}, and make sure you identify part from the report, particulary related to sales figures
+  expected_output: >
+    5 item JSON of insightful about sales report analyzed document, make the JSON readable and structured properly, so it can be read by another AI agents
+  agent: file_analyzer
+
+
