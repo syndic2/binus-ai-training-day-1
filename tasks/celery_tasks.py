@@ -7,6 +7,7 @@ from src.crew_ai_flow_trial.crews.tax_advisor.tax_advisor import TaxAdvisor
 from src.crew_ai_flow_trial.crews.file_analyzer.file_analyzer import FileAnalyzer
 from src.crew_ai_flow_trial.crews.anomaly_detector.anomaly_detector import AnomalyDetector
 from src.crew_ai_flow_trial.crews.forecaster.forecaster import Forecaster
+from src.crew_ai_flow_trial.crews.safety_detector.safety_detector import SafetyDetector
 
 import logging
 
@@ -161,3 +162,36 @@ def run_forecasting(self, file: str):
         return json.loads(json.dumps(clean))
     except Exception as e:
         return str(e)
+
+@celery_app.task(bind=True, name='helmet_detection')
+def run_helmet_detection(self, image: str):
+    self.update_state(
+        state='RUNNING', 
+        meta={'current': f'start helmet detection for {image}'}
+    )
+
+    try:
+        result = SafetyDetector().crew().kickoff(
+            inputs={
+                'image': image
+            }
+        )
+        
+        if hasattr(result, "json_dict") and result.json_dict:
+            return result.json_dict
+
+        if hasattr(result, "raw"):
+            import json
+            raw = result.raw.strip()
+
+            if raw.startswith("```"):
+                raw = raw.replace("```json", "").replace("```", "").strip()
+
+            try:
+                return json.loads(raw)
+            except:
+                return {"raw": raw}
+
+        return {"result": str(result)}
+    except Exception as e:
+        return str(e)   

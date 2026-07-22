@@ -1,0 +1,32 @@
+helmet_detection_task:
+  description: >
+    You MUST call the 'HelmetDetectionTool' tool using the provided image path {image}.
+    STRICT RULES:
+    - DO NOT analyze the image yourself
+    - DO NOT assume or invent column names
+    - DO NOT generate any results manually
+    - You MUST call the tool
+
+    Return EXACTLY the raw JSON output from the tool without any modification.
+
+    If the tool fails, return the exact error message from the tool.
+  expected_output: >
+    A JSON object containing:
+    - head_count (int) - jumlah kepala yang tidak pakai helm
+    - helmet_count (int) - jumlah helm yang terdeteksi
+    - person_count (int) - jumlah orang yang terdeteksi
+  agent: helmet_detector
+
+helmet_analysis_task:
+  description: >
+    You MUST call the 'SaveToDbTool' tool using the provided head_count, helmet_count, and person_count from the helmet_detection_task.
+    After calling the tool, capture the 'message' result from the tool and include it in your final response along with the counts.
+  expected_output: >
+    A JSON object containing:
+    - head (int)
+    - helmet (int)
+    - person (int)
+    - message (string) - the message returned by the tool
+  agent: helmet_analyzer
+  context:
+    - helmet_detection_task

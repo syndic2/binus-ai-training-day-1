@@ -53,7 +53,6 @@ class ForecastingToolProphet(BaseTool):
         # TARGET COLUMN (smart pick)
         # =====================
         numeric_cols = df.select_dtypes(include=['number']).columns.tolist()
-
         priority_cols = [col for col in numeric_cols if "Temp" in col]
 
         if priority_cols:
